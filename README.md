@@ -1,6 +1,9 @@
 # Tank Labyrinth 🎮
 
-A fast-paced top-down military tank labyrinth combat game built with pure native HTML5 Canvas, JavaScript (ES modules), and CSS.
+A fast-paced top-down military tank labyrinth combat game built with pure native HTML5 Canvas, JavaScript, and CSS.
+
+▶ **PLAY ONLINE NOW (Cloudflare Pages):** [https://tanklab.leighonline.net/](https://tanklab.leighonline.net/)  
+📦 **GitHub Repository:** [https://github.com/necrolingus/browser_tank_labyrinth_game](https://github.com/necrolingus/browser_tank_labyrinth_game)
 
 ---
 
