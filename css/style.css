@@ -1,0 +1,295 @@
+/* Gritty Military / Dieselpunk Style (No purple / neon / AI tropes) */
+:root {
+  --bg-dark: #121410;
+  --panel-bg: rgba(28, 32, 24, 0.94);
+  --panel-border: #4e5745;
+  --accent-gold: #c29b38;
+  --accent-green: #5c6b47;
+  --accent-red: #ba3828;
+  --text-primary: #d6ded0;
+  --text-muted: #8d9884;
+  --font-mono: "Courier New", "Lucida Console", monospace;
+  --font-hud: "Trebuchet MS", "Lucida Console", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+#gameCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: crosshair;
+}
+
+/* Retro Tactical Status Bar (Doom / Duke Nukem Style Bottom HUD) */
+#hud {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 62px;
+  background: linear-gradient(180deg, #23271e 0%, #171a13 50%, #10120d 100%);
+  border-top: 3px solid #4a5441;
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(140, 160, 120, 0.2);
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  pointer-events: none;
+  z-index: 10;
+  padding: 4px 12px;
+  gap: 8px;
+}
+
+.hud-block {
+  background: #191c15;
+  border: 2px solid #333a2d;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.05);
+  padding: 4px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 90px;
+}
+
+.hud-armor {
+  min-width: 130px;
+  border-left: 4px solid var(--accent-green);
+}
+
+.hud-label {
+  font-size: 9px;
+  color: #c29b38;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.hud-value {
+  font-size: 17px;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: var(--font-hud);
+  letter-spacing: 1px;
+}
+
+.hud-lives {
+  color: #ff4d36;
+  letter-spacing: 4px;
+  font-size: 18px;
+  text-shadow: 0 0 8px rgba(255, 77, 54, 0.4);
+}
+
+.hud-ammo {
+  color: #ff9d3b;
+  text-shadow: 0 0 6px rgba(255, 157, 59, 0.35);
+}
+
+.hud-airstrike {
+  color: #6d7568;
+  font-size: 14px;
+}
+
+.hud-hostiles {
+  color: #e35442;
+  font-size: 15px;
+}
+
+.hud-controls {
+  flex: 1;
+  align-items: flex-start;
+  min-width: 240px;
+  padding-left: 16px;
+  border-right: 4px solid var(--panel-border);
+}
+
+.hud-comm-text {
+  font-size: 11px;
+  color: #a6b39d;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.hud-comm-text strong {
+  color: #e2ebdb;
+}
+
+.hud-cheat {
+  color: #798373;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+
+/* Modals & Screens */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 12, 9, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(3px);
+  transition: opacity 0.2s ease;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-box {
+  background: #20241b;
+  border: 2px solid var(--panel-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85), inset 0 0 16px rgba(0, 0, 0, 0.5);
+  padding: 28px 36px;
+  max-width: 540px;
+  width: 90%;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.modal-box h1 {
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #3c4434;
+  padding-bottom: 10px;
+}
+
+.modal-box h2 {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.modal-box p {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.briefing-card {
+  text-align: left;
+  background: #171a13;
+  border: 1px solid #32382c;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #adb8a5;
+  line-height: 1.6;
+}
+
+.briefing-card ul {
+  padding-left: 20px;
+  margin-top: 6px;
+}
+
+.btn-military {
+  background: var(--accent-green);
+  color: #f0f4ec;
+  border: 1px solid #7c8e63;
+  padding: 10px 24px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: all 0.15s ease;
+}
+
+.btn-military:hover {
+  background: #6e8055;
+  color: #ffffff;
+  border-color: #a4ba83;
+}
+
+.btn-military:active {
+  transform: translateY(1px);
+}
+
+/* Campaign Victory Showcase (Ending Screen) */
+.campaign-showcase-box {
+  max-width: 640px;
+  padding: 24px 28px;
+}
+
+.tank-showcase-frame {
+  margin: 14px 0 16px 0;
+  background: #11140e;
+  border: 2px solid #5a6b49;
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.9), 0 0 12px rgba(90, 107, 73, 0.3);
+  padding: 8px;
+  border-radius: 2px;
+}
+
+#tankShowcaseCanvas {
+  display: block;
+  margin: 0 auto;
+  background: radial-gradient(circle at 50% 50%, #20261a 0%, #0d100a 100%);
+  border: 1px solid #36402e;
+}
+
+.tank-spec-label {
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #ffca28;
+  font-weight: bold;
+}
+
+.campaign-story-card {
+  background: #171a13;
+  border: 1px solid #3c4535;
+  border-left: 4px solid #ffca28;
+  padding: 14px 18px;
+  text-align: left;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #dce6d5;
+  line-height: 1.6;
+}
+
+.campaign-stats-row {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  font-size: 11px;
+  color: #9bac8f;
+  background: #12150f;
+  padding: 8px;
+  border: 1px dashed #3a4433;
+}
+
+.campaign-stats-row strong {
+  color: #8ec766;
+}
+
