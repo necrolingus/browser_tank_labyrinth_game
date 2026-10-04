@@ -3,7 +3,6 @@
 A fast-paced top-down military tank labyrinth combat game built with pure native HTML5 Canvas, JavaScript, and CSS.
 
 ▶ **PLAY ONLINE NOW (Cloudflare Pages):** [https://tanklab.leighonline.net/](https://tanklab.leighonline.net/)  
-📦 **GitHub Repository:** [https://github.com/necrolingus/browser_tank_labyrinth_game](https://github.com/necrolingus/browser_tank_labyrinth_game)
 
 ---
 
@@ -45,8 +44,6 @@ Each sector features unique labyrinth dimensions, escalating enemy armored regim
 
 ## 🎖️ Campaign Finale & Tank Showcase
 Upon clearing Sector 5, players are rewarded with an authentic military debriefing and a custom side-profile illustration frame of their **Main Battle Tank - Vanguard Mk-V** complete with road wheels, tread links, sloped armor skirts, and 120mm cannon:
-> *"You defeated the bad guys with the support from your hectic ammo and airstrikes, and now you can drive home in your tank—but you're always ready for another call to arms."*
-
 
 ---
 
